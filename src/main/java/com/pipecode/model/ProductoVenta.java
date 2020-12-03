@@ -1,5 +1,8 @@
 package com.pipecode.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /** Models table producto_venta.
  * 
  * @author Luis Alberto Carrizo
