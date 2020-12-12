@@ -2,16 +2,20 @@ package com.pipecode.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /** Models table producto_compra
  * 
  * @author Luis Alberto Carrizo
  *
  */
+@Entity
+@Table(name="producto_compra")
 public class ProductoCompra {
 	
 	@Id

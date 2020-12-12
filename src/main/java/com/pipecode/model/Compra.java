@@ -1,13 +1,9 @@
 package com.pipecode.model;
 
 import java.sql.Date;
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /** Models a Compra.
@@ -43,11 +39,7 @@ public class Compra {
 	@Column(name="borrado")
 	private boolean borrado;
 	
-	/**
-	 * Detail of buy.
-	 */
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "invoice")
-	private Collection<ProductoCompra> detalle;
+	
 
 	// Getters.
 	/**
@@ -82,13 +74,7 @@ public class Compra {
 		return borrado;
 	}
 	
-	/**
-	 * Gets buy detail.
-	 * @return Collection with the detail.
-	 */
-	public Collection<ProductoCompra> getDetalle() {
-		return detalle;
-	}
+	
 	
 	// Setters.
 	
@@ -122,13 +108,5 @@ public class Compra {
 	 */
 	public void setBorrado(boolean borrado) {
 		this.borrado = borrado;
-	}
-
-	/** Sets detail.
-	 * 
-	 * @param detalle
-	 */
-	public void setDetalle(Collection<ProductoCompra> detalle) {
-		this.detalle = detalle;
 	}
 }
