@@ -1,10 +1,18 @@
 package com.pipecode.model;
 
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 /** Models a Compra.
  * 
@@ -39,7 +47,9 @@ public class Compra {
 	@Column(name="borrado")
 	private boolean borrado;
 	
-	
+	@OneToMany(mappedBy="idCompra")
+	@JsonManagedReference
+	public List<ProductoCompra> detail;
 
 	// Getters.
 	/**
@@ -75,6 +85,9 @@ public class Compra {
 	}
 	
 	
+	public List<ProductoCompra> getDetail() {
+		return detail;
+	}
 	
 	// Setters.
 	
@@ -108,5 +121,10 @@ public class Compra {
 	 */
 	public void setBorrado(boolean borrado) {
 		this.borrado = borrado;
+	}
+	
+	
+	public void setDetail(List<ProductoCompra> detail) {
+		this.detail = detail;
 	}
 }

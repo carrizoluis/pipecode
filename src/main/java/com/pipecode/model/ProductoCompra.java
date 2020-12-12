@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 /** Models table producto_compra
  * 
@@ -53,11 +54,11 @@ public class ProductoCompra {
 	private boolean borrado;
 	
 	@JoinColumn(name="fk_producto_productoCompra", nullable=false)
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Producto producto;
 	
 	@JoinColumn(name="fk_producto_compra", nullable=false)
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Compra compra;
 
 	// Getters.
