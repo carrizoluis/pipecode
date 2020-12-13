@@ -30,8 +30,8 @@ public class ProductoCompra {
 	/**
 	 * Id associated Compra.
 	 */
-	@Column(name="id_compra")
-	private int idCompra;
+	@Column(name="compraid", insertable=false, updatable=false)
+	private int compraid;
 	
 	/**
 	 * Stock income.
@@ -51,10 +51,10 @@ public class ProductoCompra {
 	@Column(name="borrado")
 	private boolean borrado;
 	
-	@ManyToOne
-	@JoinColumn(name="productoid")
-	private Producto productoComprado;
 	
+	@ManyToOne
+	@JoinColumn(name="compraid")
+	private Compra compra;
 	
 	// Getters.
 	public int getIdProductoCompra() {
@@ -65,8 +65,8 @@ public class ProductoCompra {
 		return idProductoDetalle;
 	}
 	
-	public int getIdCompra() {
-		return idCompra;
+	public int getCompraId() {
+		return compraid;
 	}
 	
 	public int getCantidad() {
@@ -82,9 +82,7 @@ public class ProductoCompra {
 		return borrado;
 	}
 	
-	public Producto getProducto() {
-		return productoComprado;
-	}
+	
 	
 	// Setters.
 	public void setIdProductoCompra(int idProductoCompra) {
@@ -95,8 +93,8 @@ public class ProductoCompra {
 		this.idProductoDetalle = idProducto;
 	}
 
-	public void setIdCompra(int idCompra) {
-		this.idCompra = idCompra;
+	public void setCompraId(int compraid) {
+		this.compraid = compraid;
 	}
 
 	public void setCantidad(int cantidad) {
@@ -112,8 +110,5 @@ public class ProductoCompra {
 		this.borrado = borrado;
 	}
 
-	public void setProducto(Producto producto) {
-		this.productoComprado = producto;
-	}
 	
 }
