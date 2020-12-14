@@ -39,25 +39,14 @@ public class Producto {
 	@OneToMany(mappedBy="producto")
 	List<ProductoCompra> compras;
 	
+	@OneToMany(mappedBy="productoventa")
+	List<ProductoVenta> ventas;
 	
-	
-	@JsonIgnore
-	public List<ProductoCompra> getCompras() {
-		return compras;
-	}
-
-
-
-	public void setCompras(List<ProductoCompra> compras) {
-		this.compras = compras;
-	}
-
-
-
+	/** Constructor
+	 * 
+	 */
 	public Producto() {
 	}
-	
-	
 	
 	// Getters.
 	public Long getIdProducto() {
@@ -76,6 +65,16 @@ public class Producto {
 		return borrado;
 	}
 	
+	@JsonIgnore
+	public List<ProductoCompra> getCompras() {
+		return compras;
+	}
+	
+	@JsonIgnore
+	public List<ProductoVenta> getVentas() {
+		return ventas;
+	}
+	
 	// Setters.
 	public void setIdProducto(Long idProducto) {
 		this.idProducto = idProducto;
@@ -91,5 +90,13 @@ public class Producto {
 
 	public void setBorrado(boolean borrado) {
 		this.borrado = borrado;
+	}
+	
+	public void setCompras(List<ProductoCompra> compras) {
+		this.compras = compras;
+	}
+	
+	public void setVentas(List<ProductoVenta> ventas) {
+		this.ventas = ventas;
 	}
 }

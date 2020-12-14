@@ -9,12 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Models Compra Table.
+ * 
+ * @author Luis Alberto Carrizo
+ *
+ */
 @Entity
 @Table(name="compra")
 public class Compra {
 	
-	
-
 	@Id
 	private Long compraid;
 	
@@ -26,6 +29,10 @@ public class Compra {
 	
 	@Column(name="borrado")
 	private boolean borrado;
+	
+	@OneToMany(mappedBy="compra")
+	private List<ProductoCompra> detalle;
+	
 	
 	// Getters.
 	public Long getCompraid() {
@@ -40,11 +47,6 @@ public class Compra {
 	public boolean isBorrado() {
 		return borrado;
 	}
-	
-	@OneToMany(mappedBy="compra")
-	List<ProductoCompra> detalle;
-	
-	
 	
 	public List<ProductoCompra> getDetalle() {
 		return detalle;

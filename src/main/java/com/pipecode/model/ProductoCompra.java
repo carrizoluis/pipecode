@@ -33,24 +33,14 @@ public class ProductoCompra{
 	@Column(name="compraid", insertable=false, updatable=false)
 	private Long compraid;
 	
-	/**
-	 * Stock income.
-	 */
 	@Column(name="cantidad")
 	private int cantidad;
 	
-	/**
-	 * Buy price.
-	 */
 	@Column(name="precio_compra")
 	private Double precioCompra;
 	
-	/**
-	 * Deleted or not.
-	 */
 	@Column(name="borrado")
 	private boolean borrado;
-	
 	
 	@ManyToOne
 	@JoinColumn(name="compraid")

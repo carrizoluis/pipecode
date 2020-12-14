@@ -3,14 +3,14 @@ package com.pipecode.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pipecode.model.Compra;
+import com.pipecode.model.Venta;
 
-/** Repository para compra.
+/** Repository para Venta.
  * 
  * @author Luis Alberto Carrizo
  *
  */
 @Repository
-public interface CompraRepository extends CrudRepository<Compra, Long> {
+public interface VentaRepository extends CrudRepository<Venta, Long> {
 
 }
