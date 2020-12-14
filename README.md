@@ -1,8 +1,9 @@
 # pipecode
-CRUD Solution for Products.
+CRUD Solution.
 
-Deploy Instructions:
-1 - Install MySql database.
-2 - Import dump database.
-3 - Install tomcat.
-4 - Copy the RELEASE into the webapps folder into Tomcat directory.
+Deploy instructions:
+1 - Install MySql 5.7.18 engine.
+2 - Clone the project and open in eclipse.
+3 - Import dump database located in src/main/resources/DBDump into MySql Engine.
+4 - Run the API with springboot.
+5 - Swagger Documentation is in the next link: http://localhost:9898/api/swagger-ui.html.
