@@ -22,7 +22,6 @@ import javax.persistence.Table;
 public class Venta {
 	
 	@Id
-	@Column(name="ventaid")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long ventaid;
 	

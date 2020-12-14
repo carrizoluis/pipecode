@@ -28,22 +28,22 @@ public class VentaController {
 	@Autowired
 	private VentaService ventaService;
 	
-	@GetMapping("compra")
+	@GetMapping("venta")
 	public ResponseEntity<Collection<Venta>> getAll(){
 		return new ResponseEntity<Collection<Venta>>(ventaService.findAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping("compra")
+	@PostMapping("venta")
 	public ResponseEntity<Venta> create(@RequestBody Venta v) {
 		return new ResponseEntity<Venta>(ventaService.create(v), HttpStatus.OK);
 	}
 	
-	@PutMapping("compra")
+	@PutMapping("venta")
 	public ResponseEntity<Venta> update(@RequestBody Venta v) {
 		return new ResponseEntity<Venta>(ventaService.update(v), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("compra")
+	@DeleteMapping("venta")
 	public ResponseEntity<Venta> delete(@RequestBody Venta v) {
 		return new ResponseEntity<Venta>(ventaService.delete(v), HttpStatus.OK);
 	}
