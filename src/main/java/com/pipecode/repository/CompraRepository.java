@@ -1,10 +1,9 @@
 package com.pipecode.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.pipecode.model.Compra;
 
-@Repository
-public class CompraRepository extends GenericRepositoryJPA<Compra> {
+public interface CompraRepository extends CrudRepository<Compra, Long> {
 
 }

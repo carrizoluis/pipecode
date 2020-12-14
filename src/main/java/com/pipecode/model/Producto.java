@@ -1,9 +1,16 @@
 package com.pipecode.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /** Models PRODUCTO Table.
@@ -16,8 +23,9 @@ import javax.persistence.Table;
 public class Producto {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="productoid")
-	private int idProducto;
+	private Long idProducto;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -28,12 +36,31 @@ public class Producto {
 	@Column(name="borrado")
 	private boolean borrado;
 
+	@OneToMany(mappedBy="producto")
+	List<ProductoCompra> compras;
+	
+	
+	
+	@JsonIgnore
+	public List<ProductoCompra> getCompras() {
+		return compras;
+	}
+
+
+
+	public void setCompras(List<ProductoCompra> compras) {
+		this.compras = compras;
+	}
+
+
+
 	public Producto() {
 	}
 	
 	
+	
 	// Getters.
-	public int getIdProducto() {
+	public Long getIdProducto() {
 		return idProducto;
 	}
 	
@@ -50,7 +77,7 @@ public class Producto {
 	}
 	
 	// Setters.
-	public void setIdProducto(int idProducto) {
+	public void setIdProducto(Long idProducto) {
 		this.idProducto = idProducto;
 	}
 

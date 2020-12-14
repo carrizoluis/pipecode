@@ -13,8 +13,10 @@ import javax.persistence.Table;
 @Table(name="compra")
 public class Compra {
 	
+	
+
 	@Id
-	private int compraid;
+	private Long compraid;
 	
 	@Column(name="fecha_compra")
 	private Date fecha_compra;
@@ -26,7 +28,7 @@ public class Compra {
 	private boolean borrado;
 	
 	// Getters.
-	public int getCompraid() {
+	public Long getCompraid() {
 		return compraid;
 	}
 	public Date getFecha_compra() {
@@ -51,7 +53,7 @@ public class Compra {
 		this.detalle = detalle;
 	}
 	// Setters
-	public void setCompraid(int compraid) {
+	public void setCompraid(Long compraid) {
 		this.compraid = compraid;
 	}
 	public void setFecha_compra(Date fecha_compra) {

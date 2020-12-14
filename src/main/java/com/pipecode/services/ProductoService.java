@@ -2,6 +2,8 @@ package com.pipecode.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -17,21 +19,25 @@ public class ProductoService implements Services {
 	@Autowired
 	private ProductoRepository productoRepository;
 	
+	@Autowired
+	private ProductoRepository productRepository;
+	
 	public Producto create(Producto p) {
-		return productoRepository.create(p);
+		return productRepository.save(p);
 	}
 	
 	public Producto update(Producto p) {
-		return productoRepository.update(p);
+		return productoRepository.save(p);
 	}
 	
-	public void delete(Producto p) {
-		p.setBorrado(true);
-		productoRepository.update(p);
+	public void delete(String id) {
+		Optional<Producto> p = productoRepository.findById(Long.parseLong(id));
+		p.get().setBorrado(true);
+		productoRepository.save(p.get());
 	}
 	
-	public Collection<Producto> findAll(){
-		Collection<Producto> producto = new ArrayList<Producto>();
+	public List<Producto> findAll(){
+		List<Producto> producto = new ArrayList<Producto>();
 		java.util.Iterator<Producto> iterator = productoRepository.findAll().iterator();  
 		while(iterator.hasNext()) {
 			producto.add(iterator.next());

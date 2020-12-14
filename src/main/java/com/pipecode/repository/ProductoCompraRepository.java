@@ -1,10 +1,9 @@
 package com.pipecode.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.pipecode.model.ProductoCompra;
 
-@Repository
-public class ProductoCompraRepository extends GenericRepositoryJPA<ProductoCompra> {
+public interface ProductoCompraRepository extends CrudRepository<ProductoCompra, Long> {
 
 }

@@ -15,23 +15,23 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="producto_compra")
-public class ProductoCompra {
-	
+public class ProductoCompra{
+
 	@Id
 	@Column(name="idproductocompra")
-	private int idProductoCompra;
+	private Long idProductoCompra;
 	
 	/** 
 	 * Id associated Producto.
 	 */
-	@Column(name="idproductodetalle")
-	private int idProductoDetalle;
+	@Column(name="idproductodetalle", insertable=false, updatable=false)
+	private Long idProductoDetalle;
 	
 	/**
 	 * Id associated Compra.
 	 */
 	@Column(name="compraid", insertable=false, updatable=false)
-	private int compraid;
+	private Long compraid;
 	
 	/**
 	 * Stock income.
@@ -56,16 +56,20 @@ public class ProductoCompra {
 	@JoinColumn(name="compraid")
 	private Compra compra;
 	
+	@ManyToOne
+	@JoinColumn(name="idproductodetalle")
+	private Producto producto;
+	
 	// Getters.
-	public int getIdProductoCompra() {
+	public Long getIdProductoCompra() {
 		return idProductoCompra;
 	}
 	
-	public int getIdProducto() {
+	public Long getIdProducto() {
 		return idProductoDetalle;
 	}
 	
-	public int getCompraId() {
+	public Long getCompraId() {
 		return compraid;
 	}
 	
@@ -85,15 +89,15 @@ public class ProductoCompra {
 	
 	
 	// Setters.
-	public void setIdProductoCompra(int idProductoCompra) {
+	public void setIdProductoCompra(Long idProductoCompra) {
 		this.idProductoCompra = idProductoCompra;
 	}
 
-	public void setIdProducto(int idProducto) {
+	public void setIdProducto(Long idProducto) {
 		this.idProductoDetalle = idProducto;
 	}
 
-	public void setCompraId(int compraid) {
+	public void setCompraId(Long compraid) {
 		this.compraid = compraid;
 	}
 

@@ -1,10 +1,14 @@
 package com.pipecode.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +26,13 @@ public class ProductoController {
 	private ProductoService productoService;
 	
 	@GetMapping("producto")
-	public Collection<Producto> getAll(){
-		return productoService.findAll();
+	public ResponseEntity<List<Producto>> getAll(){
+		return new ResponseEntity<List<Producto>>(productoService.findAll(),HttpStatus.OK);
 	}
 	
 	@PostMapping("producto")
-	public Producto create(@RequestBody Producto p) {
-		return productoService.create(p);
+	public ResponseEntity<Producto> create(@RequestBody Producto p) {
+		return new ResponseEntity<Producto>(productoService.create(p),HttpStatus.OK);
 	}
 	
 	@PutMapping("producto")
@@ -36,9 +40,9 @@ public class ProductoController {
 		return productoService.update(p);
 	}
 	
-	@DeleteMapping("producto")
-	public String delete(@RequestBody Producto p) {
-		productoService.delete(p);
-		return "Ok";
+	@DeleteMapping("producto/{id}")
+	public ResponseEntity<HttpStatus> delete(@PathVariable String id) {
+		productoService.delete(id);
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 }

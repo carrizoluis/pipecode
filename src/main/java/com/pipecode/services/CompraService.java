@@ -17,17 +17,21 @@ public class CompraService implements Services {
 	@Autowired
 	private CompraRepository compraRepository;
 	
+	@Autowired
+	private ProductoCompraService productoCompraService;
+	
 	public Compra create(Compra c) {
-		return compraRepository.create(c);
+		c.getDetalle().forEach(pc -> this.productoCompraService.create(pc));
+		return compraRepository.save(c);
 	}
 	
 	public Compra update(Compra c) {
-		return compraRepository.update(c);
+		return compraRepository.save(c);
 	}
 	
 	public void delete(Compra c) {
 		c.setBorrado(true);
-		compraRepository.update(c);
+		compraRepository.save(c);
 	}
 	
 	public Collection<Compra> findAll(){
